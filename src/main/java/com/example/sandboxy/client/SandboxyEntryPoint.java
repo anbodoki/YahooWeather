@@ -2,31 +2,25 @@ package com.example.sandboxy.client;
 
 import com.example.sandboxy.server.Weather;
 import com.example.sandboxy.shared.InfoAsync;
-import com.example.sandboxy.shared.WeatherInterface;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.sencha.gxt.core.client.GXT;
-import com.sencha.gxt.widget.core.client.ContentPanel;
 import com.sencha.gxt.widget.core.client.box.MessageBox;
 import com.sencha.gxt.widget.core.client.button.TextButton;
 import com.sencha.gxt.widget.core.client.event.SelectEvent;
 import com.sencha.gxt.widget.core.client.event.SelectEvent.SelectHandler;
-import com.sencha.gxt.widget.core.client.grid.ColumnConfig;
-import com.sencha.gxt.widget.core.client.grid.ColumnModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
-public class SandboxyEntryPoint implements IsWidget, EntryPoint {
+public class SandboxyEntryPoint implements  EntryPoint {
 
-  private ContentPanel panel;
+  //interface MyUiBinder extends UiBinder<ContentPanel, SandboxyEntryPoint> {}
 
-  private static final WeatherInterface w = GWT.create(WeatherInterface.class);
+ // private static final WeatherInterface w = GWT.create(WeatherInterface.class);
+
 
   @Override
   public void onModuleLoad() {
@@ -55,20 +49,34 @@ public class SandboxyEntryPoint implements IsWidget, EntryPoint {
       @Override
       public void onSelect(SelectEvent event) {
         InfoAsync info = GWT.create(com.example.sandboxy.shared.Info.class);
+        //final DBManagerAsync man = GWT.create(DBManager.class);
         try {
             String zip = input.getText();
-            info.start(zip, new AsyncCallback<String>() {
+            info.start(zip, new AsyncCallback<Weather>() {
             @Override
             public void onFailure(Throwable throwable) {
               GWT.log("ERROR");
             }
 
             @Override
-            public void onSuccess(String s) {
+            public void onSuccess(Weather w) {
               MessageBox msg = new MessageBox("Information");
-              msg.setMessage(s);
+              msg.setMessage("got");
               msg.show();
               input.setText("");
+              /*
+              man.insertRow(s, new AsyncCallback<Void>() {
+                @Override
+                public void onFailure(Throwable throwable) {
+
+                }
+
+                @Override
+                public void onSuccess(Void aVoid) {
+
+                }
+              });
+              */
             }
           });
         } catch (Exception e) {
@@ -78,6 +86,7 @@ public class SandboxyEntryPoint implements IsWidget, EntryPoint {
     });
   }
 
+  /*
   @Override
   public Widget asWidget() {
 
@@ -101,11 +110,9 @@ public class SandboxyEntryPoint implements IsWidget, EntryPoint {
 
       ColumnModel<Weather> cm = new ColumnModel<Weather>(columns);
 
-      //ListStore<Weather> store = new ListStore<Weather>(w.);
-      //store.addAll(TestData.getStocks());
+      ListStore<Weather> store = new ListStore<Weather>(w.key());
     }
-
-
     return panel;
   }
+  */
 }

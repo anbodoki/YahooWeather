@@ -26,7 +26,7 @@ public class YahooParser {
                 doc.valueOf("/rss/channel/y:location/@region") );
         weather.setCountry(
                 doc.valueOf("/rss/channel/y:location/@country") );
-        weather.setCondition(
+        weather.setCond(
                 doc.valueOf("/rss/channel/item/y:condition/@text") );
         weather.setTemp(
                 doc.valueOf("/rss/channel/item/y:condition/@temp") );

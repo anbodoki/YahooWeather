@@ -7,9 +7,17 @@
         <servlet-name>com.example.sandboxy.Sandboxy Info</servlet-name>
         <servlet-class>com.example.sandboxy.server.InfoImpl</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>com.example.sandboxy.Sandboxy DBManager</servlet-name>
+        <servlet-class>com.example.sandboxy.server.DBManagerImpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>com.example.sandboxy.Sandboxy Info</servlet-name>
         <url-pattern>/Sandboxy/info</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>com.example.sandboxy.Sandboxy DBManager</servlet-name>
+        <url-pattern>/Sandboxy/DBManager</url-pattern>
     </servlet-mapping>
 
     <!-- Servlets -->

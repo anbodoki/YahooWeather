@@ -1,27 +1,28 @@
 package com.example.sandboxy.server;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
-/**
- * Created by anano.bodokia on 4/15/2015.
- */
+@Entity
 public class Weather implements Serializable{
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String city;
     private String region;
     private String country;
-    private String condition;
+    private String cond;
     private String temp;
     private String chill;
     private String humidity;
 
-    private static int COUNTER = 0;
+    public Weather() {}
 
-    public Weather() {
-        this.id = Integer.valueOf(COUNTER++);
-    }
-
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
@@ -29,8 +30,8 @@ public class Weather implements Serializable{
         return chill;
     }
 
-    public String getCondition() {
-        return condition;
+    public String getCond() {
+        return cond;
     }
 
     public String getCity() {
@@ -61,8 +62,8 @@ public class Weather implements Serializable{
         this.city = city;
     }
 
-    public void setCondition(String condition) {
-        this.condition = condition;
+    public void setCond(String cond) {
+        this.cond = cond;
     }
 
     public void setCountry(String country) {
@@ -85,7 +86,7 @@ public class Weather implements Serializable{
     public String toString() {
         String result = "Chill: " + this.getChill() + " "
                 + "City: " + this.getCity() + " "
-                + "Condition: " + this.getCondition() + " "
+                + "Condition: " + this.getCond() + " "
                 + "Country: " + this.getCountry() + " "
                 + "Humidity: " + this.getHumidity() + " "
                 + "Region: " + this.getRegion() + " "

@@ -9,7 +9,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 @RemoteServiceRelativePath("info")
 public class InfoImpl extends RemoteServiceServlet implements com.example.sandboxy.shared.Info {
 	@Override
-	public String start(String zip) {
+	public Weather start(String zip) {
 		try {
 			return Info.start(zip);
 		} catch (Exception e) {

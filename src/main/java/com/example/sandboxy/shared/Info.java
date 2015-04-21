@@ -1,5 +1,6 @@
 package com.example.sandboxy.shared;
 
+import com.example.sandboxy.server.Weather;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -8,5 +9,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("info")
 public interface Info extends RemoteService{
-	public String start(String zip);
+	public Weather start(String zip);
 }
